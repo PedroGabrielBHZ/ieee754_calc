@@ -59,11 +59,13 @@ Auxiliary functions
 fn scientific_notation_f32(number: f32) -> String {
     let mut exponent = 0;
     let mut mantissa = number;
-    while mantissa >= 10.0 {
-        mantissa /= 10.0;
-        exponent += 1;
+    if mantissa.abs() >= 0.0 {
+        while mantissa.abs() >= 10.0 {
+            mantissa /= 10.0;
+            exponent += 1;
+        }
     }
-    while mantissa > -1.0 {
+    while mantissa.abs() <= 1.0 {
         mantissa *= 10.0;
         exponent -= 1;
     }
@@ -74,11 +76,13 @@ fn scientific_notation_f32(number: f32) -> String {
 fn scientific_notation_f64(number: f64) -> String {
     let mut exponent = 0;
     let mut mantissa = number;
-    while mantissa >= 10.0 {
-        mantissa /= 10.0;
-        exponent += 1;
+    if mantissa.abs() >= 0.0 {
+        while mantissa.abs() >= 10.0 {
+            mantissa /= 10.0;
+            exponent += 1;
+        }
     }
-    while mantissa > -1.0 {
+    while mantissa.abs() <= 1.0 {
         mantissa *= 10.0;
         exponent -= 1;
     }
